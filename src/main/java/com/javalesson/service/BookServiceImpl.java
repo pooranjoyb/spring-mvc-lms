@@ -4,11 +4,15 @@ import com.javalesson.dao.BookDAO;
 import com.javalesson.dao.BookDAOImpl;
 import com.javalesson.model.Book;
 import com.javalesson.util.BookValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
 
+    @Autowired
     private final BookDAO bookDAO;
 
     public BookServiceImpl() {
@@ -17,7 +21,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void addBook(Book book) {
-        if(BookValidator.validateTitle(book.getTitle())) {
+        // example business logic/validations
+        if (BookValidator.validateTitle(book.getTitle())) {
             bookDAO.addBook(book);
         }
     }

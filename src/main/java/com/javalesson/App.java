@@ -1,8 +1,9 @@
 package com.javalesson;
 
+import com.javalesson.config.AppConfig;
+import com.javalesson.controller.BookController;
 import com.javalesson.model.Book;
-import com.javalesson.service.BookService;
-import com.javalesson.service.BookServiceImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -10,18 +11,19 @@ import java.util.List;
  * Main target point
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        BookService dao = new BookServiceImpl();
-        Book book = new Book(2, "Thousand Splendid suns", "Kalid", true);
-        dao.addBook(book);
+public class App {
+    public static void main(String[] args) {
 
-        Book bookWithId = dao.getBookById(1);
+        AnnotationConfigApplicationContext cxt = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        BookController controller = cxt.getBean(BookController.class);
+//        Book book = new Book(2, "Thousand Splendid suns", "Khalid", true);
+//        controller.addBook(book);
+
+        Book bookWithId = controller.getBookById(1);
         System.out.println("Book : " + bookWithId);
 
-        List<Book> allBooks = dao.getAllBooks();
+        List<Book> allBooks = controller.getAllBooks();
         for (Book b : allBooks) {
             System.out.println(b);
         }

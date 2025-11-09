@@ -2,6 +2,7 @@ package com.javalesson.dao;
 
 import com.javalesson.model.Book;
 import com.javalesson.util.DatabaseConnection;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
+@Repository
 public class BookDAOImpl implements BookDAO {
     private final Connection connection;
 
