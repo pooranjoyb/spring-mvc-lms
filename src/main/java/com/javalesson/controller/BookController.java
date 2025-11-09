@@ -24,7 +24,7 @@ public class BookController {
         this.bookService.addBook(book);
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public Book getBookById(@PathVariable int id) {
         return this.bookService.getBookById(id);
     }
@@ -34,14 +34,14 @@ public class BookController {
         return this.bookService.getAllBooks();
     }
 
-    @PutMapping("/{id")
+    @PutMapping("/{id}")
     public void updateBook(@PathVariable int id, @RequestBody Book book){
         // this is needed, we need to first set the requested id to the book and then call service
         book.setId(id);
         this.bookService.updateBook(book);
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable int id) {
         this.bookService.deleteBook(id);
     }
