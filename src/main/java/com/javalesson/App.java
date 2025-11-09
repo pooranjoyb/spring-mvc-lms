@@ -1,8 +1,9 @@
 package com.javalesson;
 
-import com.javalesson.dao.BookDAO;
-import com.javalesson.dao.BookDAOImpl;
 import com.javalesson.model.Book;
+import com.javalesson.service.BookService;
+import com.javalesson.service.BookServiceImpl;
+
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        BookDAO dao = new BookDAOImpl();
-        Book book = new Book(1, "The Alchemist", "Paolo Coelho", true);
+        BookService dao = new BookServiceImpl();
+        Book book = new Book(2, "Thousand Splendid suns", "Kalid", true);
         dao.addBook(book);
 
         Book bookWithId = dao.getBookById(1);
